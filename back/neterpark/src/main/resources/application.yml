@@ -1,0 +1,15 @@
+server:
+  port: 8095
+spring:
+  datasource:
+    url: jdbc:mariadb://svc.sel3.cloudtype.app:30470/park?serverTimezone=UTC&characterEncoding=UTF-8
+    username: park
+    password: park
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    open-in-view: false
+    properties:
+      hibernate:
+        show_sql: true
