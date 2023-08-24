@@ -1,14 +1,27 @@
+import HeaderBanner from "../components/banner";
 import Footer from "../components/footer";
 import Header from "../components/herder";
+import PropTypes from "prop-types";
 
-const Home = () => {
+const Components = () => {
   return (
-    <>
+    <div id="main-wrapper">
       <Header />
-      <div>메인 페이지</div>
+      <div className="page-wrapper">
+        <div className="container-fluid">
+          <HeaderBanner />
+          <div style={{ margin: "400px auto 400px", textAlign: "center" }}>
+            메인내용부분입니다.
+          </div>
+        </div>
+      </div>
       <Footer />
-    </>
+    </div>
   );
 };
 
-export default Home;
+Components.propTypes = {
+  classes: PropTypes.object,
+};
+
+export default Components;

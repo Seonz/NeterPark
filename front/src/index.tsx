@@ -3,8 +3,8 @@ import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { RecoilRoot } from "recoil";
-import Home from "./pages/home";
-
+import Components from "./pages/home";
+import "./assets/scss/style.scss";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
@@ -13,7 +13,7 @@ root.render(
   <BrowserRouter>
     <RecoilRoot>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Components />} />
       </Routes>
     </RecoilRoot>
   </BrowserRouter>
