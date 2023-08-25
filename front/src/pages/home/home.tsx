@@ -1,7 +1,7 @@
-import HeaderBanner from "../components/banner";
-import Footer from "../components/footer";
-import Header from "../components/herder";
-import PropTypes from "prop-types";
+import HeaderBanner from "../../components/banner";
+import Footer from "../../components/footer";
+import Header from "../../components/herder";
+import HomePage from "./sections/homeform";
 
 const Components = () => {
   return (
@@ -11,17 +11,13 @@ const Components = () => {
         <div className="container-fluid">
           <HeaderBanner />
           <div style={{ margin: "400px auto 400px", textAlign: "center" }}>
-            메인내용부분입니다.
+            <HomePage />
           </div>
         </div>
       </div>
       <Footer />
     </div>
   );
-};
-
-Components.propTypes = {
-  classes: PropTypes.object,
 };
 
 export default Components;
