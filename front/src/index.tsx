@@ -6,6 +6,7 @@ import { RecoilRoot } from "recoil";
 import Components from "./pages/home/home";
 import "./assets/scss/style.scss";
 import apiClient from "./axiosConfig";
+import MainLoginform from "./pages/login/login";
 // 전역 axios 설정
 
 const root = ReactDOM.createRoot(
@@ -26,6 +27,7 @@ root.render(
     <RecoilRoot>
       <Routes>
         <Route path="/" element={<Components />} />
+        <Route path="/login" element={<MainLoginform />} />
       </Routes>
     </RecoilRoot>
   </BrowserRouter>
