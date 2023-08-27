@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Container,
   NavbarBrand,
@@ -14,14 +14,24 @@ import {
 import logo from "../assets/images/logos/mainlogo.png";
 import { Link } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
-const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
+import { Cookies } from "react-cookie";
 
+const Header = () => {
+  const cookie = new Cookies();
+  const [isOpen, setIsOpen] = useState(false);
+  const [login, setlogin] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+
+  useEffect(() => {
+    if (cookie.get("token") !== undefined) {
+      setlogin(true);
+    }
+  }, []);
 
   const search = () => {
     alert("기능만들어야함");
   };
+
   const bannerst = {
     positon: "relative",
     backgroundColor: "#76d7ea",
@@ -45,9 +55,23 @@ const Header = () => {
           <Collapse isOpen={isOpen} navbar id="header1">
             <Nav navbar className="ms-auto">
               <NavItem>
-                <Link className="nav-link" to={"/login"}>
-                  로그인
-                </Link>
+                {!login && (
+                  <Link className="nav-link" to={"/login"}>
+                    로그인
+                  </Link>
+                )}
+                {login && (
+                  <Link
+                    className="nav-link"
+                    to={"/"}
+                    onClick={(e) => {
+                      cookie.remove("token");
+                      setlogin(false);
+                    }}
+                  >
+                    로그아웃
+                  </Link>
+                )}
               </NavItem>
               <NavItem>
                 <Link className="nav-link" to={"/"}>

@@ -13,14 +13,14 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
-apiClient
-  .get("/main")
-  .then((res) => {
-    console.log(res);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+// apiClient
+//   .get("/main")
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 
 root.render(
   <BrowserRouter>

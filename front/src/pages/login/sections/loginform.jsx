@@ -12,21 +12,25 @@ export default function LoginForm() {
     const [user, setuser] = useRecoilState(Userinfo);
     const [cookies, setCookie, removeCookie] = useCookies(["rememberUserId"]);
     const [idset, setidset] = useState(false);
+
     useEffect(() => {
         if (cookies.rememberUserId !== undefined) {
             setuser({ userId: cookies.rememberUserId });
             setidset(true);
         }
-    }, [])
+    }, []);
+
     useEffect(() => {
         if (idset) {
-            setCookie('rememberUserId', user.userId, { maxAge: 2000 });
+            const expires = new Date();//현재시간을가져옴
+            expires.setFullYear(expires.getFullYear() + 1);//기간설정 1년
+            setCookie('rememberUserId', user.userId, { expires });//사용할위치선정
             return;
         } else {
             removeCookie('rememberUserId');
             return;
         }
-    }, [idset])
+    }, [idset]);
 
     const Login = () => {
         if (!user.userId) {
@@ -40,7 +44,10 @@ export default function LoginForm() {
         // apiClient.post("/login")
         //     .then((rep) => {
         //         if (rep.ok) {
-        //             alert("정상적으로 로그인되었습니다.")
+        //             alert("정상적으로 로그인되었습니다.");
+        // const expires = new Date();//현재시간을가져옴
+        // expires.setFullYear(expires.getFullYear() + 1);//기간설정 1년
+        //       setCookie('token', user.userId, { expires });//사용할위치선정
         //             navigate("/");
         //         } else {
         //             alert("정보가 옮바르지않습니다.");
@@ -49,7 +56,10 @@ export default function LoginForm() {
         //         alert("정보가 옮바르지않습니다.");
         //     })
         alert("정상실행");
-        console.log(user);
+        const expires = new Date();//현재시간을가져옴
+        expires.setFullYear(expires.getFullYear() + 1);//기간설정 1년
+        setCookie('token', user.userId, { expires });//사용할위치선정
+        navigate("/");
     }
     const inputinfo = (e) => {
         setuser({ ...user, [e.target.name]: e.target.value })
