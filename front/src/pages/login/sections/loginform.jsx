@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Form, Col, Container, FormGroup, Input, Row } from "reactstrap";
 import { useRecoilState } from "recoil";
-//import apiClient from "../../../axiosConfig";
+import apiClient from "../../../axiosConfig";
 import { Userinfo } from '../../../components/atoms/login'
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
@@ -42,20 +42,22 @@ export default function LoginForm() {
             return;
         }
 
-        // apiClient.post("/login",user)
-        //     .then((rep) => {
-        //         if (rep.ok) {
-        //             alert("정상적으로 로그인되었습니다.");
-        // const expires = new Date();//현재시간을가져옴
-        // expires.setFullYear(expires.getFullYear() + 1);//기간설정 1년
-        //       setCookie('token', rep, { expires });//사용할위치선정
-        //             navigate("/");
-        //         } else {
-        //             alert("정보가 옮바르지않습니다.");
-        //         }
-        //     }).catch((err) => {
-        //         alert("정보가 옮바르지않습니다.");
-        //     })
+        apiClient.post("/login", user)
+            .then((rep) => {
+                if (rep.data === 1) {
+                    console.log(rep);
+                    alert("정상적으로 로그인되었습니다.");
+                    const expires = new Date();//현재시간을가져옴
+                    expires.setFullYear(expires.getFullYear() + 1);//기간설정 1년
+                    setCookie('token', rep, { expires });//사용할위치선정
+                    navigate("/");
+                } else {
+                    alert("정보가 옮바르지않습니다.");
+                    console.log(rep)
+                }
+            }).catch((err) => {
+                alert("에러");
+            })
     }
     const inputinfo = (e) => {
         setuser({ ...user, [e.target.name]: e.target.value })
