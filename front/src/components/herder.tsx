@@ -79,6 +79,11 @@ const Header = () => {
                 </Link>
               </NavItem>
               <NavItem>
+                <Link className="nav-link" to={"/notice"}>
+                  공지사항
+                </Link>
+              </NavItem>
+              <NavItem>
                 <Link className="nav-link" to={"/"}>
                   마이페이지
                 </Link>

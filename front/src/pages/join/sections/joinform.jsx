@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Form, Col, Container, FormGroup, Input, Row } from "reactstrap";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useResetRecoilState } from "recoil";
 //import apiClient from "../../../axiosConfig";
 import { Joininfo } from '../../../components/atoms/login'
 import { useEffect, useState } from "react";
@@ -9,6 +9,7 @@ import apiClient from "../../../axiosConfig";
 
 export default function JoinForm() {
 
+    let reset = useResetRecoilState(Joininfo);
     let navigate = useNavigate();
     const [user, setuser] = useRecoilState(Joininfo);
 
@@ -49,6 +50,7 @@ export default function JoinForm() {
         }
         apiClient.post("/signup", user)
             .then((rep) => {
+                reset();
                     navigate("/login");
             }).catch((err) => {
                 alert("에러");
@@ -80,22 +82,22 @@ export default function JoinForm() {
                     <Form>
                         <Row>
                             <Col className="col-md">
-                                    <FormGroup className="col-md-12">
-                                        <span class="blet">*</span> 아이디                                    
-                                    </FormGroup>
+                                <FormGroup className="col-md-12">
+                                    <span class="blet">*</span> 아이디
+                                </FormGroup>
 
-                                    <FormGroup className="col-md-12">
-                                    </FormGroup>
-                            
+                                <FormGroup className="col-md-12">
+                                </FormGroup>
+
                             </Col>
                             <Col>
                                 <input type="text" name="userId" size="20" maxlength="16" onChange={inputinfo} />
-                                <input type="button" value="중복 검사" onClick="CheckDup();" class="btnDup"  />
+                                <input type="button" value="중복 검사" onClick="CheckDup();" class="btnDup" />
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-                                <span class="blet">*</span> 비밀번호                    
+                                <span class="blet">*</span> 비밀번호
                             </Col>
                             <Col>
                                 <input type="password" name="userpw" size="20" maxlength="16" onChange={inputinfo} />
@@ -107,7 +109,7 @@ export default function JoinForm() {
                                 <span class="blet">*</span> 비밀번호 확인
                             </Col>
                             <Col>
-                                <input type="password" name="userPwd" size="20" maxlength="16" onChange={inputinfo} />                            
+                                <input type="password" name="userPwd" size="20" maxlength="16" onChange={inputinfo} />
                             </Col>
                         </Row>
                         <Row>
@@ -115,7 +117,7 @@ export default function JoinForm() {
                                 <span class="blet">*</span> 이름
                             </Col>
                             <Col>
-                                <input type="text" name="userName" size="15" maxlength="6" onChange={inputinfo} />                            
+                                <input type="text" name="userName" size="15" maxlength="6" onChange={inputinfo} />
                             </Col>
                         </Row>
 
@@ -151,13 +153,13 @@ export default function JoinForm() {
 
                         <Row>
                             <Col md="12" className="text-center">
-                                    <br></br>
-                                    <input
-                                        type="button"
-                                        className="btn btn-success waves-effect waves-light m-r-10 col-md-12"
-                                        value={"회원가입"}
-                                        onClick={join}
-                                    />
+                                <br></br>
+                                <input
+                                    type="button"
+                                    className="btn btn-success waves-effect waves-light m-r-10 col-md-12"
+                                    value={"회원가입"}
+                                    onClick={join}
+                                />
                             </Col>
 
                         </Row>

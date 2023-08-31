@@ -17,10 +17,10 @@ export const Joininfo = atom({
         userId: "",
         userPwd: "",
         userName: "",
-        userEmail:"",
-        userPhoneF:"",
-        userPhoneM:"",
-        userPhoneL:"",
-        userAddr:""
+        userEmail: "",
+        userPhoneF: "",
+        userPhoneM: "",
+        userPhoneL: "",
+        userAddr: ""
     },
 });

@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Form, Col, Container, FormGroup, Input, Row } from "reactstrap";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useResetRecoilState } from "recoil";
 import apiClient from "../../../axiosConfig";
 import { Userinfo } from '../../../components/atoms/login'
 import { useEffect, useState } from "react";
@@ -8,7 +8,7 @@ import { useCookies } from "react-cookie";
 import { BsCheckLg } from "react-icons/bs";
 
 export default function LoginForm() {
-
+    let reset = useResetRecoilState(Userinfo);
     let navigate = useNavigate();
     const [user, setuser] = useRecoilState(Userinfo);
     const [cookies, setCookie, removeCookie] = useCookies(["rememberUserId"]);
@@ -42,7 +42,6 @@ export default function LoginForm() {
             alert("비밀번호를 입력해주세요 ")
             return;
         }
-
         apiClient.post("/login", user)
             .then((rep) => {
                 if (rep.data === 1) {
@@ -51,6 +50,7 @@ export default function LoginForm() {
                     const expires = new Date();//현재시간을가져옴
                     expires.setFullYear(expires.getFullYear() + 1);//기간설정 1년
                     setCookie('token', rep, { expires });//사용할위치선정
+                    reset();
                     navigate("/");
                 } else {
                     alert("정보가 올바르지않습니다.");
