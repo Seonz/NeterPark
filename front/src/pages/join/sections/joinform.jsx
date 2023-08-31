@@ -47,6 +47,12 @@ export default function JoinForm() {
         }
 
     }
+    const inputinfo = (e) => {
+
+        setuser({ ...user, [e.target.name]: e.target.value })
+        console.log(user);
+
+    }
 
     const ContainerStyles = {
         width: "500px",
@@ -76,8 +82,8 @@ export default function JoinForm() {
                             
                             </Col>
                             <Col>
-                                <input type="text" name="userId" size="20" maxlength="16" />
-                                <input type="button" value="중복 검사" onClick="CheckDup();" class="btnDup" />
+                                <input type="text" name="userId" size="20" maxlength="16" onChange={inputinfo} />
+                                <input type="button" value="중복 검사" onClick="CheckDup();" class="btnDup"  />
                             </Col>
                         </Row>
                         <Row>
@@ -85,7 +91,7 @@ export default function JoinForm() {
                                 <span class="blet">*</span> 비밀번호                    
                             </Col>
                             <Col>
-                                <input type="password" name="userpw" size="20" maxlength="16" />
+                                <input type="password" name="userpw" size="20" maxlength="16" onChange={inputinfo} />
                                 <span class="f12 fC666">※ 8~16글자의 영어, 숫자 혼용</span>
                             </Col>
                         </Row>
@@ -94,7 +100,7 @@ export default function JoinForm() {
                                 <span class="blet">*</span> 비밀번호 확인
                             </Col>
                             <Col>
-                                <input type="password" name="userPwd" size="20" maxlength="16" />                            
+                                <input type="password" name="userPwd" size="20" maxlength="16" onChange={inputinfo} />                            
                             </Col>
                         </Row>
                         <Row>
@@ -102,7 +108,7 @@ export default function JoinForm() {
                                 <span class="blet">*</span> 이름
                             </Col>
                             <Col>
-                                <input type="text" name="userName" size="15" maxlength="6" />                            
+                                <input type="text" name="userName" size="15" maxlength="6" onChange={inputinfo} />                            
                             </Col>
                         </Row>
 
@@ -112,11 +118,11 @@ export default function JoinForm() {
                                 전화
                             </Col>
                             <Col>
-                                <input type="text" name="userPhoneF" size="3" maxlength="3" />
+                                <input type="text" name="userPhoneF" size="3" maxlength="3" onChange={inputinfo} />
                                 -
-                                <input type="text" name="userPhoneM" size="4" maxlength="4" />
+                                <input type="text" name="userPhoneM" size="4" maxlength="4" onChange={inputinfo} />
                                 -
-                                <input type="text" name="userPhoneL" size="4" maxlength="4" />
+                                <input type="text" name="userPhoneL" size="4" maxlength="4" onChange={inputinfo} />
                             </Col>
                         </Row>
                         <Row>
@@ -124,7 +130,7 @@ export default function JoinForm() {
                                 이메일
                             </Col>
                             <Col>
-                                <input type="text" id="addr" name="userEmail" placeholder="이메일" />
+                                <input type="text" id="addr" name="userEmail" placeholder="이메일" onChange={inputinfo} />
                             </Col>
                         </Row>
                         <Row>
@@ -132,7 +138,7 @@ export default function JoinForm() {
                                 주소
                             </Col>
                             <Col>
-                                <input type="text" id="addr" name="userAddr" placeholder="주소" />
+                                <input type="text" id="addr" name="userAddr" placeholder="주소" onChange={inputinfo} />
                             </Col>
                         </Row>
 
