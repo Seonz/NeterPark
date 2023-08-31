@@ -17,4 +17,12 @@ public class UserService {
             return null;
         }
     }
+    public int joinUser(User vo) {
+        try{
+            userRepository.save(vo);
+            return 1;
+        } catch (Exception i){
+            return 0;
+        }
+    }
 }
