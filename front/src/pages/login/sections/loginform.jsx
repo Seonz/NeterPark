@@ -5,6 +5,7 @@ import apiClient from "../../../axiosConfig";
 import { Userinfo } from '../../../components/atoms/login'
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
+import { BsCheckLg } from "react-icons/bs";
 
 export default function LoginForm() {
 
@@ -52,7 +53,7 @@ export default function LoginForm() {
                     setCookie('token', rep, { expires });//사용할위치선정
                     navigate("/");
                 } else {
-                    alert("정보가 옮바르지않습니다.");
+                    alert("정보가 올바르지않습니다.");
                     console.log(rep)
                 }
             }).catch((err) => {
@@ -61,6 +62,7 @@ export default function LoginForm() {
     }
     const inputinfo = (e) => {
         setuser({ ...user, [e.target.name]: e.target.value })
+        console.log(user);
     }
 
     const activeEnter = (e) => {//엔터 누르면 로그인 실행 로직

@@ -5,6 +5,7 @@ import { useRecoilState } from "recoil";
 import { Joininfo } from '../../../components/atoms/login'
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
+import apiClient from "../../../axiosConfig";
 
 export default function JoinForm() {
 
@@ -17,35 +18,41 @@ export default function JoinForm() {
             return;
         }
         if (!user.userPwd) {
-            alert("비밀번호를 입력해주세요 ")
+            alert("비밀번호를 입력해 주세요 ")
             return;
         }
+        
         if (!user.userName) {
-            alert("이름를 입력해주세요 ")
+            alert("이름를 입력해 주세요 ")
             return;
         }
         if (!user.userEmail) {
-            alert("이메일를 입력해주세요 ")
+            alert("이메일를 입력해 주세요 ")
             return;
         }
         if (!user.userPhoneF) {
-            alert("전화번호를 입력해주세요 ")
+            alert("전화번호를 입력해 주세요 ")
             return;
         }
         if (!user.userPhoneM) {
-            alert("전화번호를 입력해주세요 ")
+            alert("전화번호를 입력해 주세요 ")
             return;
         }
 
         if (!user.userPhoneL) {
-            alert("전화번호를 입력해주세요 ")
+            alert("전화번호를 입력해 주세요 ")
             return;
         }
         if (!user.userAddr) {
-            alert("주소를 입력해주세요 ")
+            alert("주소를 입력해 주세요 ")
             return;
         }
-
+        apiClient.post("/signup", user)
+            .then((rep) => {
+                    navigate("/login");
+            }).catch((err) => {
+                alert("에러");
+            })
     }
     const inputinfo = (e) => {
 
