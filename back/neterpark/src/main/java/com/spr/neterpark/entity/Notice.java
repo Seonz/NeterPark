@@ -2,7 +2,7 @@ package com.spr.neterpark.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
-
+import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import java.util.Date;
 
@@ -28,7 +28,7 @@ public class Notice {
     @JoinColumn(name = "userId", insertable = false, updatable = false)
     private User user; // 아이디
 
-    @Column(length = 18, nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
     private Date regDate; // 작성 일자
 }
