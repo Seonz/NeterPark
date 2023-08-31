@@ -74,7 +74,7 @@ const Header = () => {
                 )}
               </NavItem>
               <NavItem>
-                <Link className="nav-link" to={"/"}>
+                <Link className="nav-link" to={"/join"}>
                   회원가입
                 </Link>
               </NavItem>

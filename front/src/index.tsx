@@ -7,6 +7,7 @@ import Components from "./pages/home/home";
 import "./assets/scss/style.scss";
 import apiClient from "./axiosConfig";
 import MainLoginform from "./pages/login/login";
+import MainJoinform from "./pages/join/join";
 // 전역 axios 설정
 
 const root = ReactDOM.createRoot(
@@ -28,6 +29,7 @@ root.render(
       <Routes>
         <Route path="/" element={<Components />} />
         <Route path="/login" element={<MainLoginform />} />
+        <Route path="/join" element={<MainJoinform />} />
       </Routes>
     </RecoilRoot>
   </BrowserRouter>

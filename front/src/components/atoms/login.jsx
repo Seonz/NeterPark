@@ -8,3 +8,19 @@ export const Userinfo = atom({
         userPwd: ""
     },
 });
+
+
+
+export const Joininfo = atom({
+    key: "joininfo",
+    default: {
+        userId: "",
+        userPwd: "",
+        userName: "",
+        userEmail:"",
+        userPhoneF:"",
+        userPhoneM:"",
+        userPhoneL:"",
+        userAddr:""
+    },
+});
