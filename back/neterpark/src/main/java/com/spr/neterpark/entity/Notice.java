@@ -9,6 +9,7 @@ import java.util.Date;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Data
+@DynamicInsert
 public class Notice {
 
     @Id
@@ -24,7 +25,7 @@ public class Notice {
     @Column(length = 10)
     private String userId;
 
-    @ManyToOne
+/*    @ManyToOne
     @JoinColumn(name = "userId", insertable = false, updatable = false)
     private User user; // 아이디
 
