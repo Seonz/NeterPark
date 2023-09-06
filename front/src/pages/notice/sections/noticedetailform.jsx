@@ -5,7 +5,6 @@ import { useRecoilState, useResetRecoilState } from 'recoil';
 import { Noticeform, Noticelist } from '../../../components/atoms/board';
 import { Col, Container, Input, Label, Row } from 'reactstrap';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 export default function Noticedetailform(number) {
     const [datailnotice, setnotice] = useRecoilState(Noticeform);
@@ -17,13 +16,11 @@ export default function Noticedetailform(number) {
     useEffect(() => {
         console.log(number.number);
         sponnotice();
-        console.log(datailnotice);
     }, []);
 
     const sponnotice = () => {
         apiClient.get("/search/" + number.number)
             .then((res) => {
-                console.log(res.data);
                 setnotice(res.data);
             }).catch((err) => {
                 console.log(err);

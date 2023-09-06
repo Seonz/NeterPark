@@ -4,6 +4,7 @@ import apiClient from "../../../axiosConfig";
 import Noticedetailform from './noticedetailform';
 import { useRecoilState } from 'recoil';
 import { Noticelist } from '../../../components/atoms/board';
+import Replyform from './reply';
 
 export default function Noticeviewform() {
     const [notice, setnotice] = useState([]);
@@ -20,14 +21,12 @@ export default function Noticeviewform() {
     const getList = () => {
         apiClient.get("/getnotice")
             .then((rep) => {
-                console.log(rep.data);
                 setnotice(rep.data);
             }).catch((err) => {
                 console.log(err);
             })
     }
     const Aticle = () => {
-        console.log(notice);
         if (notice !== undefined) {
             return notice.map((noti, index) => (
                 <tr>
@@ -91,7 +90,9 @@ export default function Noticeviewform() {
                 </div>
             </div>}
             {!list &&
-                <Noticedetailform number={datail} />
+                <>
+                    <Noticedetailform number={datail} />
+                </>
             }
         </section>
     )
