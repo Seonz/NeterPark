@@ -4,4 +4,6 @@ import com.spr.neterpark.entity.Basket;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BasketRepository extends JpaRepository<Basket, Integer> {
+
+    Basket findByRegNo(int regNo);
 }

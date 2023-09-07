@@ -23,7 +23,7 @@ public class Basket {
     @Column(length = 10)
     private String userId;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userId", insertable = false, updatable = false)
     private User user; // 아이디
 
