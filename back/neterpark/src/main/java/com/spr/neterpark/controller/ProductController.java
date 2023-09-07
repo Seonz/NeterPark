@@ -37,18 +37,29 @@ public class ProductController {
 
     @PutMapping("/updapro")
     public Product updaPro(@RequestBody Product product){
-
         Product updateProduct = productService.getProductById(product);
-        updateProduct.setCategory(product.getCategory());
-        updateProduct.setImgurl(product.getImgurl());
-        updateProduct.setProName(product.getProName());
-        updateProduct.setProTime(product.getProTime());
-        updateProduct.setStartDate(product.getStartDate());
-        updateProduct.setEndDate(product.getEndDate());
-
-
-        Product updated = productService.addProduct(updateProduct);
-        return updated;
+        if (updateProduct != null) {
+            if (product.getCategory() != null) {
+                updateProduct.setCategory(product.getCategory());
+            }
+            if (product.getImgurl() != null) {
+                updateProduct.setImgurl(product.getImgurl());
+            }
+            if (product.getProName() != null) {
+                updateProduct.setProName(product.getProName());
+            }
+            if (product.getProTime() != null) {
+                updateProduct.setProTime(product.getProTime());
+            }
+            if (product.getStartDate() != null) {
+                updateProduct.setStartDate(product.getStartDate());
+            }
+            if (product.getEndDate() != null) {
+                updateProduct.setEndDate(product.getEndDate());
+            }
+        }
+            Product updated = productService.addProduct(updateProduct);
+            return updated;
 
     }
 
